@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # ==================================================
-
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
@@ -14,8 +13,8 @@ ver=$VERSION_ID
 country=ID
 state=INDONESIA
 locality=JAKARTA
-organization=STOREVPN
-organizationalunit=STOREVPN
+organization=HOKAGEVPN
+organizationalunit=HOKAGEVPN
 commonname=none
 email=hokagelegend99@gmail.com
 
