@@ -1,15 +1,19 @@
 #!/bin/bash
 # SL
 # ==========================================
-# Color
-RED='\033[0;31m'
-NC='\033[0m'
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
-BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-LIGHT='\033[0;37m'
+# ==========================================
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+###########- COLOR CODE -##############
+colornow=$(cat /etc/dzikra/theme/color.conf)
+export NC="\e[0m"
+export YELLOW='\033[0;33m';
+export RED="\033[0;31m"
+export COLOR1="$(cat /etc/dzikra/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/dzikra/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+###########- END COLOR CODE -##########
+# ==========================================
+
 # ==========================================
 # Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
@@ -24,27 +28,27 @@ exit 0
 fi
 clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/shadowsocks-libev/akun.conf")
-	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
-		clear
-		echo ""
-		echo "You have no existing clients!"
-		exit 1
-	fi
+        if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+                clear
+                echo ""
+                echo "You have no existing clients!"
+                exit 1
+        fi
 
-	clear
-	echo ""
-	echo " Select the existing client you want to remove"
-	echo " Press CTRL+C to return"
-	echo " ==============================="
-	echo "     No  Expired   User"
-	grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 2-3 | nl -s ') '
-	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
-		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Pilih salah satu[1]: " CLIENT_NUMBER
-		else
-			read -rp "Pilih salah satu [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
-		fi
-	done
+        clear
+        echo ""
+        echo " Select the existing client you want to remove"
+        echo " Press CTRL+C to return"
+        echo " ==============================="
+        echo "     No  Expired   User"
+        grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 2-3 | nl -s ') '
+        until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
+                if [[ ${CLIENT_NUMBER} == '1' ]]; then
+                        read -rp "Pilih salah satu[1]: " CLIENT_NUMBER
+                else
+                        read -rp "Pilih salah satu [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+                fi
+        done
 # match the selected number to a client name
 CLIENT_NAME=$(grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 2-3 | sed -n "${CLIENT_NUMBER}"p)
 user=$(grep -E "^### " "/etc/shadowsocks-libev/akun.conf" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
@@ -126,10 +130,17 @@ rm -f "/etc/shadowsocks-libev/$user-gosth2.json"
 rm -f "/home/vps/public_html/$user.json"
 clear
 echo ""
-echo "==========================="
-echo "  SS OBFS Account Deleted  "
-echo "==========================="
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│${NC} ${COLBG1}    •ShadowSocks Account Delete •            ${NC} $COLOR1│$NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo "Username  : $user"
 echo "Expired   : $exp"
 echo "==========================="
-echo "Script Mod By SL"
+echo "Script Mod By HOKAGE"
+
+
+
+
+
+
+
