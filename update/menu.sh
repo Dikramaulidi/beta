@@ -208,7 +208,6 @@ up2u="updatews"
 else
 up2u="menu"
 fi
-
 DATE=$(date +'%d %B %Y')
 datediff() {
     d1=$(date -d "$1" +%s)
@@ -218,12 +217,14 @@ datediff() {
 mai="datediff "$Exp" "$DATE""
 
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐$NC"
-echo -e "$COLOR1│$NC Version     :${COLOR1} $(cat /opt/.ver) Latest Version${NC}"
-echo -e "$COLOR1│$NC Client Name : $Name"
+echo -e "$COLOR1│${NC} Version     : $COLOR1 $(cat /opt/.ver) NEW                          |$NC"
+echo -e "$COLOR1│${NC} Client Name :$COLOR1  $Name                          |$NC"
 if [ $exp \> 1000 ];
 then
-    echo -e "$COLOR1│$NC License     : Lifetime"
+    echo -e "$COLOR1│$NC License     : $COLOR1 Lifetime                         |$NC"
 else
+    datediff "$Exp" "$DATE                                            |$NC"
+fi;
     datediff "$Exp" "$DATE"
 fi;
 echo -e "$COLOR1└─────────────────────────────────────────────────┘$NC"
