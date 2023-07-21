@@ -5,9 +5,9 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 colornow=$(cat /etc/dzikra/theme/color.conf)
 export NC="\e[0m"
 export YELLOW='\033[0;33m';
-export RED="\033[0;31m" 
+export RED="\033[0;31m"
 export COLOR1="$(cat /etc/dzikra/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-export COLBG1="$(cat /etc/dzikra/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
+export COLBG1="$(cat /etc/dzikra/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
 uram=$( free -h | awk 'NR==2 {print $3}' )
@@ -100,7 +100,7 @@ else
 fi
 
 # // SSH SHADOW SHOCK
-xray=$( systemctl status shadowshock | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+shadowshock=$( systemctl status shadowshock | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $xray == "running" ]]; then
     status_shadowshock="${GREEN}ON${NC}"
 else
@@ -170,7 +170,7 @@ echo -e "$COLOR1│${NC}  $COLOR1[INFO]${NC} Successfully Up To Date!"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •                $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "  Press any key to back on menu"
 menu
@@ -210,10 +210,10 @@ echo -e "$COLOR1│$NC [ SW-SHOCK: ${status_shadowshock} ] [ SSTP : ${status_sst
 echo -e "$COLOR1|                                                 |${NC}"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "  ${COLOR1}[01]${NC} • SSHWS   [${YELLOW}Menu${NC}]   ${COLOR1}[07]${NC} • THEME    [${YELLOW}Menu${NC}]  $COLOR1│$NC"   
-echo -e "  ${COLOR1}[02]${NC} • VMESS   [${YELLOW}Menu${NC}]   ${COLOR1}[08]${NC} • BACKUP   [${YELLOW}Menu${NC}]  $COLOR1│$NC"  
-echo -e "  ${COLOR1}[03]${NC} • VLESS   [${YELLOW}Menu${NC}]   ${COLOR1}[09]${NC} • ADD HOST/DOMAIN  $COLOR1│$NC"  
-echo -e "  ${COLOR1}[04]${NC} • TROJAN  [${YELLOW}Menu${NC}]   ${COLOR1}[10]${NC} • RENEW CERT       $COLOR1│$NC"  
+echo -e "  ${COLOR1}[01]${NC} • SSHWS   [${YELLOW}Menu${NC}]   ${COLOR1}[07]${NC} • THEME    [${YELLOW}Menu${NC}]  $COLOR1│$NC"
+echo -e "  ${COLOR1}[02]${NC} • VMESS   [${YELLOW}Menu${NC}]   ${COLOR1}[08]${NC} • BACKUP   [${YELLOW}Menu${NC}]  $COLOR1│$NC"
+echo -e "  ${COLOR1}[03]${NC} • VLESS   [${YELLOW}Menu${NC}]   ${COLOR1}[09]${NC} • ADD HOST/DOMAIN  $COLOR1│$NC"
+echo -e "  ${COLOR1}[04]${NC} • TROJAN  [${YELLOW}Menu${NC}]   ${COLOR1}[10]${NC} • RENEW CERT       $COLOR1│$NC"
 echo -e "  ${COLOR1}[05]${NC} • SS WS   [${YELLOW}Menu${NC}]   ${COLOR1}[11]${NC} • SETTINGS [${YELLOW}Menu${NC}]  $COLOR1│$NC"
 echo -e "  ${COLOR1}[06]${NC} • SET DNS [${YELLOW}Menu${NC}]   ${COLOR1}[12]${NC} • INFO     [${YELLOW}Menu${NC}]  $COLOR1│$NC"
 if [ "$Isadmin" = "ON" ]; then
@@ -230,7 +230,7 @@ myver="$(cat /opt/.ver)"
 
 if [[ $serverV > $myver ]]; then
 echo -e "$RED┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$RED│$NC ${COLOR1}[100]${NC} • UPDATE TO V$serverV" 
+echo -e "$RED│$NC ${COLOR1}[100]${NC} • UPDATE TO V$serverV"
 echo -e "$RED└─────────────────────────────────────────────────┘${NC}"
 up2u="updatews"
 else
@@ -251,13 +251,13 @@ echo -e "$COLOR1│${NC} Client Name :$COLOR1  $Name                          |$
 if [ $exp \> 1000 ];
 then
     echo -e "$COLOR1│$NC License     : $COLOR1 Lifetime                         |$NC"
-else                                                                          
+else
     datediff "$Exp" "$DATE                                            |$NC"
 fi;
 echo -e "$COLOR1└─────────────────────────────────────────────────┘$NC"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •              $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
 echo -ne " Select menu : "; read opt
 case $opt in
