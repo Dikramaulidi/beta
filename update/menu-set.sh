@@ -2,11 +2,11 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-colornow=$(cat /etc/yokkovpn/theme/color.conf)
+colornow=$(cat /etc/dzikra/theme/color.conf)
 NC="\e[0m"
-RED="\033[0;31m" 
-COLOR1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
+RED="\033[0;31m"
+COLOR1="$(cat /etc/dzikra/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+COLBG1="$(cat /etc/dzikra/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 ###########- END COLOR CODE -##########
 
 BURIQ () {
@@ -98,6 +98,7 @@ else
 resst="${red}OFFLINE${NC}"
 fi
 sshws=$(service ws-dropbear status | grep active | cut -d ' ' $stat)
+
 if [ "$sshws" = "active" ]; then
 rews="${green}ONLINE${NC}"
 else
@@ -117,7 +118,7 @@ resdb="${green}ONLINE${NC}"
 else
 resdb="${red}OFFLINE${NC}"
 fi
- 
+
 v2r=$(service $rekk status | grep active | cut -d ' ' $stat)
 if [ "$v2r" = "active" ]; then
 resv2r="${green}ONLINE${NC}"
@@ -150,6 +151,14 @@ ressq="${green}ONLINE${NC}"
 else
 ressq="${red}OFFLINE${NC}"
 fi
+
+shadowsocks=$(systemctl status shadowsocks-libev-server@config  | grep active | cut -d ' ' $stat)
+if [ "$shadowsocks" = "active" ]; then
+resss="${green}ONLINE${NC}"
+else
+resss="${red}OFFLINE${NC}"
+fi
+
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}               • SERVER STATUS •               ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
@@ -165,10 +174,11 @@ echo -e " $COLOR1│${NC}  • XRAY-SS                          • $resv2r"
 echo -e " $COLOR1│${NC}  • XRAY                             • $resv2r"
 echo -e " $COLOR1│${NC}  • VLESS                            • $resvles"
 echo -e " $COLOR1│${NC}  • TROJAN                           • $restr"
-echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}" 
+echo -e " $COLOR1│${NC}  • SHADOWSHOCKS                     • $resss"
+echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "  Press any key to back on menu"
 menu-set
@@ -207,14 +217,18 @@ sleep 1
 systemctl restart xray
 echo -e " $COLOR1│${NC}  [INFO] • Restarting Xray Services            $COLOR1│${NC}"
 sleep 1
+systemctl restart shadowsocks-libev-server@config
+echo -e " $COLOR1│${NC}  [INFO] • Restarting Shadowsocks Services     $COLOR1│${NC}"
+sleep 1
+
 systemctl restart cron
 echo -e " $COLOR1│${NC}  [INFO] • Restarting Cron Services            $COLOR1│${NC}"
 echo -e " $COLOR1│${NC}  [INFO] • All Services Restates Successfully  $COLOR1│${NC}"
 sleep 1
-echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}" 
+echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "  Press any key to back on menu"
 menu-set
@@ -237,8 +251,8 @@ sudo iptables -A FORWARD -m string --algo bm --string "announce" -j DROP
 sudo iptables -A FORWARD -m string --algo bm --string "info_hash" -j DROP
 sudo iptables-save > /etc/iptables.up.rules
 sudo iptables-restore -t < /etc/iptables.up.rules
-sudo netfilter-persistent save >/dev/null 2>&1  
-sudo netfilter-persistent reload >/dev/null 2>&1 
+sudo netfilter-persistent save >/dev/null 2>&1
+sudo netfilter-persistent reload >/dev/null 2>&1
 touch /etc/ontorrent
 menu-set
 } || {
@@ -256,7 +270,7 @@ sudo iptables -D FORWARD -m string --algo bm --string "info_hash" -j DROP
 sudo iptables-save > /etc/iptables.up.rules
 sudo iptables-restore -t < /etc/iptables.up.rules
 sudo netfilter-persistent save >/dev/null 2>&1
-sudo netfilter-persistent reload >/dev/null 2>&1 
+sudo netfilter-persistent reload >/dev/null 2>&1
 rm -f /etc/ontorrent
 menu-set
 }
@@ -276,7 +290,7 @@ echo -e " $COLOR1│$NC   $COLOR1[00]$NC • GO BACK"
 echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
 read -p "  Select menu :  "  opt
 echo -e   ""
@@ -293,4 +307,17 @@ case $opt in
 *) clear ; menu-set ;;
 esac
 
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
