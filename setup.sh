@@ -255,6 +255,8 @@ wget https://raw.githubusercontent.com/Dikramaulidi/multiws/main/backup/set-br.s
 clear
 wget https://raw.githubusercontent.com/Dikramaulidi/multiws/main/websocket/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
+wget https://raw.githubusercontent.com/Dikramaulidi/beta/main/shadowsocks/sodosok.sh && chmod +x sodosok.sh && ./sodosok.sh
+clear
 echo -e "$green[INFO]$NC Download Extra Menu"
 sleep 2
 wget https://raw.githubusercontent.com/Dikramaulidi/multiws/main/update/update.sh && chmod +x update.sh && ./update.sh
@@ -316,6 +318,9 @@ echo "   - XRAY  Vless None TLS    : 80" | tee -a log-install.txt
 echo "   - Trojan GRPC             : 443" | tee -a log-install.txt
 echo "   - Trojan WS               : 443" | tee -a log-install.txt
 echo "   - Sodosok WS/GRPC         : 443" | tee -a log-install.txt
+echo "   - SSTP VPN                : 443" | tee -a log-install.txt
+echo "   - L2TP VPN                : 443" | tee -a log-install.txt
+echo "   - WIREGUARD VPN           : 443" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone                : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
