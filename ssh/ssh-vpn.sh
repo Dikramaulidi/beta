@@ -13,11 +13,11 @@ ver=$VERSION_ID
 #detail nama perusahaan
 country=ID
 state=INDONESIA
-locality=JAWATENGAH
-organization=Blogger
-organizationalunit=Blogger
+locality=JAKARTA
+organization=STOREVPN
+organizationalunit=STOREVPN
 commonname=none
-email=admin@sedang.my.id
+email=hokagelegend99@gmail.com
 
 # simple password minimal
 curl -sS https://raw.githubusercontent.com/Dikramaulidi/beta/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
