@@ -23,7 +23,7 @@ echo -e "${NC}${LIGHT}Fuck You!!"
 exit 0
 fi
 clear
-IP=$(wget -qO- ipinfo.io/ip);
+MYIP=$(wget -qO- ipinfo.io/ip);
 lastport1=$(grep "port_tls" /etc/shadowsocks-libev/akun.conf | tail -n1 | awk '{print $2}')
 lastport2=$(grep "port_http" /etc/shadowsocks-libev/akun.conf | tail -n1 | awk '{print $2}')
 if [[ $lastport1 == '' ]]; then
@@ -36,7 +36,7 @@ http=3443
 else
 http="$((lastport2+1))"
 fi
-source /var/lib/crot/ipvps.conf
+echo "IP=$host" > /var/lib/dzikra-pro/ipvps.conf
 if [[ "$IP2" = "" ]]; then
 domain=$(cat /etc/xray/domain)
 else
@@ -45,7 +45,7 @@ fi
 
 #Default
 cat > /etc/shadowsocks-libev/tls.json<<END
-{   
+{
     "server":"0.0.0.0",
     "server_port":$tls,
     "password":"tls",
@@ -86,20 +86,20 @@ echo ""
 echo "Masukkan Password"
 
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
-		read -rp "Password : " -e user
-		CLIENT_EXISTS=$(grep -w $user /etc/shadowsocks-libev/akun.conf | wc -l)
+                read -rp "Password : " -e user
+                CLIENT_EXISTS=$(grep -w $user /etc/shadowsocks-libev/akun.conf | wc -l)
 
-		if [[ ${CLIENT_EXISTS} == '1' ]]; then
-			echo ""
-			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
-			exit 1
-		fi
-	done
+                if [[ ${CLIENT_EXISTS} == '1' ]]; then
+                        echo ""
+                        echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
+                        exit 1
+                fi
+        done
 read -p "Expired (Days) : " masaaktif
 hariini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 cat > /etc/shadowsocks-libev/$user-tls.json<<END
-{   
+{
     "server":"0.0.0.0",
     "server_port":$tls,
     "password":"$user",
@@ -159,4 +159,5 @@ echo -e "Link TLS    : $linkss1"
 echo -e "========================="
 echo -e "Link No TLS : $linkss2"
 echo -e "========================="
-echo -e "Script Mod By SL"
+echo -e "Script BY HOKAGE LEGEND"
+
