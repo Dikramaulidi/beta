@@ -99,6 +99,31 @@ else
     status_xray="${RED}OFF${NC}"
 fi
 
+# // SSH SHADOW SHOCK
+xray=$( systemctl status shadowshock | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $xray == "running" ]]; then
+    status_shadowshock="${GREEN}ON${NC}"
+else
+    status_shadowshock="${RED}OFF${NC}"
+fi
+
+# // SSH  SSTP
+xray=$( systemctl status sstp | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $xray == "running" ]]; then
+    status_sstp="${GREEN}ON${NC}"
+else
+    status_sstp="${RED}OFF${NC}"
+fi
+
+# // SSH L2TP
+xray=$( systemctl status xray | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $xray == "running" ]]; then
+    status_l2tp="${GREEN}ON${NC}"
+else
+    status_l2tp="${RED}OFF${NC}"
+fi
+
+
 function add-host(){
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -180,6 +205,9 @@ echo -e "$COLOR1│$NC IP-VPS         : ${COLOR1}$IPVPS${NC}"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│$NC [ SSH WS : ${status_ws} ]  [ XRAY : ${status_xray} ]   [ NGINX : ${status_nginx} ] $COLOR1│$NC"
+echo -e "$COLOR1|                                                 |${NC}"
+echo -e "$COLOR1│$NC [ SW-SHOCK: ${status_shadowshock} ] [ SSTP : ${status_sstp} ]  [ L2TP : ${status_l2tp} ] $COLOR1│$NC"
+echo -e "$COLOR1|                                                 |${NC}"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "  ${COLOR1}[01]${NC} • SSHWS   [${YELLOW}Menu${NC}]   ${COLOR1}[07]${NC} • THEME    [${YELLOW}Menu${NC}]  $COLOR1│$NC"   
@@ -189,8 +217,8 @@ echo -e "  ${COLOR1}[04]${NC} • TROJAN  [${YELLOW}Menu${NC}]   ${COLOR1}[10]${
 echo -e "  ${COLOR1}[05]${NC} • SS WS   [${YELLOW}Menu${NC}]   ${COLOR1}[11]${NC} • SETTINGS [${YELLOW}Menu${NC}]  $COLOR1│$NC"
 echo -e "  ${COLOR1}[06]${NC} • SET DNS [${YELLOW}Menu${NC}]   ${COLOR1}[12]${NC} • INFO     [${YELLOW}Menu${NC}]  $COLOR1│$NC"
 if [ "$Isadmin" = "ON" ]; then
-echo -e "                                                  $COLOR1│$NC"
 echo -e "  ${COLOR1}[13]${NC} • REG IP  [${YELLOW}Menu${NC}]   ${COLOR1}[14]${NC} • SET BOT  [${YELLOW}Menu${NC}]  $COLOR1│$NC"
+echo -e "  ${COLOR1}[15]${NC} • SW-SHOCK • SSTP • WIREGUARD • L2TP[${YELLOW}Menu${NC}] $COLOR1│$NC"
 ressee="menu-ip"
 bottt="menu-bot"
 else
@@ -208,6 +236,7 @@ up2u="updatews"
 else
 up2u="menu"
 fi
+
 DATE=$(date +'%d %B %Y')
 datediff() {
     d1=$(date -d "$1" +%s)
@@ -222,14 +251,12 @@ echo -e "$COLOR1│${NC} Client Name :$COLOR1  $Name                          |$
 if [ $exp \> 1000 ];
 then
     echo -e "$COLOR1│$NC License     : $COLOR1 Lifetime                         |$NC"
-else
+else                                                                          
     datediff "$Exp" "$DATE                                            |$NC"
-fi;
-    datediff "$Exp" "$DATE"
 fi;
 echo -e "$COLOR1└─────────────────────────────────────────────────┘$NC"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e ""
 echo -ne " Select menu : "; read opt
@@ -243,6 +270,7 @@ case $opt in
 06 | 7) clear ; menu-theme ;;
 07 | 8) clear ; menu-backup ;;
 09 | 9) clear ; add-host ;;
+15 | 15) clear ; menu-baru ;;
 10) clear ; crtxray ;;
 11) clear ; menu-set ;;
 12) clear ; info ;;
