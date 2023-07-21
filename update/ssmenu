@@ -1,0 +1,56 @@
+#!/bin/bash
+Remote side unexpectedly closed network connection://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+colornow=$(cat /etc/dzikra/theme/color.conf)
+Session stoppedm"
+    - Press <Return> to exit tab
+    - Press R to restart session
+    - Press S to save terminal output to filenow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/dzikra/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+###########- END COLOR CODE -##########
+clear
+m="\033[0;1;36m"
+y="\033[0;1;37m"
+yy="\033[0;1;32m"
+yl="\033[0;1;33m"
+wh="\033[0m"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│${NC} ${COLBG1}               •  SHADOWSOCKS  •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$yy 1$y. Create Account Shadowsocks"
+echo -e "$yy 2$y. Delete Account Shadowsocks"
+echo -e "$yy 3$y. Extending Account Shadowsocks Active Life"
+echo -e "$yy 4$y. Check User Login Shadowsocks"
+echo -e "$yy 5$y. Menu"
+echo -e "$yy 6$y. Exit"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+read -p "Select From Options [ 1 - 6 ] : " menu
+echo -e ""
+case $menu in
+1)
+addss
+;;
+2)
+delss
+;;
+3)
+renewss
+;;
+4)
+cekss
+;;
+5)
+clear
+menu ;;
+6)
+clear
+exit
+;;
+*)
+clear
+menu
+;;
+esac
+
