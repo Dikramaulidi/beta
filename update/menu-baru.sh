@@ -2,7 +2,7 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-colornow=$(cat /etc/yokkovpn/theme/color.conf)
+colornow=$(cat /etc/dzikra/theme/color.conf)
 NC="\e[0m"
 RED="\033[0;31m" 
 COLOR1="$(cat /etc/dzikra/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
@@ -75,7 +75,7 @@ portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '
 wsssl=`cat /root/log-install.txt | grep -w "SSH SSL Websocket" | cut -d: -f2 | awk '{print $1}'`
 
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}               • SSH PANEL MENU •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1│${NC} ${COLBG1}               • UPDATE PANEL MENU •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 read -p "   Username : " Login
@@ -91,7 +91,7 @@ if grep -qw "$Login" /etc/xray/ssh.txt; then
 echo -e "$COLOR1│${NC}  [Error] Username \e[31m$Login\e[0m already exist"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}             • FIKRI VPN PREMIUM •             $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "  Press any key to back on menu"
@@ -104,7 +104,7 @@ if [ -z $Login ]; then
 echo -e "$COLOR1│${NC} [Error] Username cannot be empty "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}            • FIKRI VPN PREMIUM •             $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "    Press any key to back on menu"
@@ -116,7 +116,7 @@ if [ -z $Pass ]; then
 echo -e "$COLOR1│${NC}  [Error] Password cannot be empty "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}            • FIKRI VPN PREMIUM •             $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -127,7 +127,7 @@ if [ -z $masaaktif ]; then
 echo -e "$COLOR1│${NC}  [Error] EXP Date cannot be empty "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}             • FIKRI VPN PREMIUM •             $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "  Press any key to back on menu"
@@ -156,7 +156,7 @@ PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 
 if [[ ! -z "${PID}" ]]; then
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}               • SSH PANEL MENU •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1│${NC} ${COLBG1}            • UPDATE PANEL MENU •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│$NC  Username   : $Login" 
@@ -177,7 +177,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}             • FIKRI VPN PREMIUM •             $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 else
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
@@ -202,7 +202,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}             • FIKRI VPN PREMIUM •             $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 fi
 echo -e ""
@@ -216,7 +216,7 @@ portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '
 if [ -f "/etc/systemd/system/sshws.service" ]; then
 clear
 else
-wget -q -O /usr/bin/proxy3.js "https://raw.githubusercontent.com/Dikramaulidi/beta/main/ssh/proxy3.js"
+wget -q -O /usr/bin/proxy3.js "https://raw.githubusercontent.com/Dikramaulidi/multiws/main/ssh/proxy3.js"
 cat <<EOF > /etc/systemd/system/sshws.service
 [Unit]
 Description=WSenabler
@@ -241,7 +241,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│${NC} ${COLBG1}               • WEBSOCKET MENU •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}" 
-wget -q -O /usr/bin/ssh-wsenabler "https://raw.githubusercontent.com/Khoiril7/multiws/main/ssh/sshws-true.sh" && chmod +x /usr/bin/ssh-wsenabler
+wget -q -O /usr/bin/ssh-wsenabler "https://raw.githubusercontent.com/Dikramaulidi/multiws/main/ssh/sshws-true.sh" && chmod +x /usr/bin/ssh-wsenabler
 systemctl daemon-reload >/dev/null 2>&1
 systemctl enable sshws.service >/dev/null 2>&1
 systemctl start sshws.service >/dev/null 2>&1
@@ -251,7 +251,7 @@ echo -e "$COLOR1│${NC}  [INFO] • Restart is require for Changes"
 echo -e "$COLOR1│${NC}           to take effect"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e ""
 read -n 1 -s -r -p "  Press any key to back on menu"
@@ -272,7 +272,7 @@ echo -e "$COLOR1│${NC}  [INFO] • Restart is require for Changes"
 echo -e "$COLOR1│${NC}           to take effect"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e ""
 read -n 1 -s -r -p "  Press any key to back on menu"
@@ -296,7 +296,7 @@ echo -e "$COLOR1│$NC"
 echo -e "$COLOR1│$NC   ${COLOR1}[00]${NC} • GO BACK"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -p " Select menu :  "  opt
@@ -374,7 +374,7 @@ rm -f /tmp/vpn-login-tcp.txt
 rm -f /tmp/vpn-login-udp.txt
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHORIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo "";
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -402,7 +402,7 @@ fi
 fi
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -423,7 +423,7 @@ else
 echo -e "$COLOR1│${NC}   [INFO] Failure: User $User Not Exist."
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -434,7 +434,7 @@ if [ -z $User ]; then
 echo -e "$COLOR1│${NC}   [Error] Username cannot be empty "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -466,7 +466,7 @@ echo -e "   Days Added : $Days Days"
 echo -e "   Expires on : $Expiration_Display"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 else
 clear
@@ -477,7 +477,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "   Username Doesnt Exist      "
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 fi
 echo ""
@@ -515,7 +515,7 @@ echo -e "$COLOR1┌────────────────────�
 echo "   Total: $JUMLAH User"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -573,7 +573,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 
 else
@@ -600,7 +600,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│${NC}  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •            $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 fi
 echo ""
@@ -609,29 +609,28 @@ menu-ssh
 }
 clear
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}               • SSH PANEL MENU •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1│${NC} ${COLBG1}               • NEW PANEL MENU •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}
- $COLOR1│$NC   ${COLOR1}[01]${NC} • ADD SSH         ${COLOR1}[05]${NC} • DELETE SSH${NC}    $COLOR1│$NC
- $COLOR1│$NC   ${COLOR1}[02]${NC} • TRIAL SSH       ${COLOR1}[06]${NC} • RENEW SSH${NC}     $COLOR1│$NC
- $COLOR1│$NC   ${COLOR1}[03]${NC} • USER ONLINE     ${COLOR1}[07]${NC} • USERS LIST${NC}    $COLOR1│$NC
- $COLOR1│$NC   ${COLOR1}[04]${NC} • ENABLE WS                            $COLOR1│$NC
- $COLOR1│$NC                                              ${NC} $COLOR1│$NC
- $COLOR1│$NC   ${COLOR1}[00]${NC} • GO BACK${NC}                              $COLOR1│$NC"
+ $COLOR1│$NC ${COLOR1}[01]${NC} • ADD SW-SHOCK    ${COLOR1}[05]${NC} • DELETE SW-SHOCK${NC} $COLOR1│$NC
+ $COLOR1│$NC ${COLOR1}[02]${NC} • ADD L2TP        ${COLOR1}[06]${NC} • RENEW SW-SHOCK${NC}  $COLOR1│$NC
+ $COLOR1│$NC ${COLOR1}[03]${NC} • ADD WIREGUARD   ${COLOR1}[07]${NC} • USERS LIST${NC}      $COLOR1│$NC
+ $COLOR1│$NC ${COLOR1}[04]${NC} • ADD PPTP                               $COLOR1│$NC
+ $COLOR1│$NC ${COLOR1}[00]${NC} • GO BACK${NC}                                $COLOR1│$NC"
 echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}              • KHOIRIL ANAM •            $COLOR1│$NC"
+echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e ""
 read -p " Select menu :  "  opt
 echo -e ""
 case $opt in
-01 | 1) clear ; addssh ;;
-02 | 2) clear ; trialssh ;;
-03 | 3) clear ; cekssh ;;
-04 | 4) clear ; sshwss ;;
-05 | 5) clear ; delssh ;;
-06 | 6) clear ; renewssh ;;
+01 | 1) clear ; sw-shock ;;
+02 | 2) clear ; l2tp ;;
+03 | 3) clear ; wireguard ;;
+04 | 4) clear ; pptp ;;
+05 | 5) clear ; delsw-shock ;;
+06 | 6) clear ; renewsw-shock ;;
 07 | 7) clear ; memberssh ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu-ssh ;;
