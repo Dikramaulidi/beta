@@ -2,12 +2,12 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-colornow=$(cat /etc/yokkovpn/theme/color.conf)
+colornow=$(cat /etc/dzikra/theme/color.conf)
 export NC="\e[0m"
 export YELLOW='\033[0;33m';
 export RED="\033[0;31m" 
-export COLOR1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-export COLBG1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
+export COLOR1="$(cat /etc/dzikra/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/dzikra/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
 uram=$( free -h | awk 'NR==2 {print $3}' )
@@ -173,7 +173,8 @@ else
 echo -e "$COLOR1│$NC System Uptime  : $uphours $upminutes"
 fi
 echo -e "$COLOR1│$NC Memory Usage   : $uram / $tram"
-echo -e "$COLOR1│$NC ISP & City     : $ISP & $CITY"
+echo -e "$COLOR1│$NC ISP            : $ISP"
+echo -e "$COLOR1│$NC City           : $CITY"
 echo -e "$COLOR1│$NC Current Domain : $(cat /etc/xray/domain)"
 echo -e "$COLOR1│$NC IP-VPS         : ${COLOR1}$IPVPS${NC}"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
