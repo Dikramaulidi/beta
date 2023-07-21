@@ -172,10 +172,10 @@ exit 0
 fi
 sleep 3
 
-mkdir -p /etc/yokkovpn
-mkdir -p /etc/yokkovpn/theme
-mkdir -p /var/lib/yokkovpn-pro >/dev/null 2>&1
-echo "IP=" >> /var/lib/yokkovpn-pro/ipvps.conf
+mkdir -p /etc/dzikra
+mkdir -p /etc/dzikra/theme
+mkdir -p /var/lib/dzikra-pro >/dev/null 2>&1
+echo "IP=" >> /var/lib/dzikra-pro/ipvps.conf
 
 if [ -f "/etc/xray/domain" ]; then
 echo ""
