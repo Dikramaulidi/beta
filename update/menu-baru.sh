@@ -615,25 +615,27 @@ echo -e " $COLOR1┌────────────────────
  $COLOR1│$NC ${COLOR1}[01]${NC} • ADD SW-SHOCK    ${COLOR1}[05]${NC} • DELETE SW-SHOCK${NC} $COLOR1│$NC
  $COLOR1│$NC ${COLOR1}[02]${NC} • ADD L2TP        ${COLOR1}[06]${NC} • RENEW SW-SHOCK${NC}  $COLOR1│$NC
  $COLOR1│$NC ${COLOR1}[03]${NC} • ADD WIREGUARD   ${COLOR1}[07]${NC} • USERS LIST${NC}      $COLOR1│$NC
- $COLOR1│$NC ${COLOR1}[04]${NC} • ADD PPTP                               $COLOR1│$NC
+ $COLOR1│$NC ${COLOR1}[04]${NC} • ADD PPTP        ${COLOR1}[08]${NC} • ADD SSTP${NC}        $COLOR1│$NC                       $COLOR1│$NC
  $COLOR1│$NC ${COLOR1}[00]${NC} • GO BACK${NC}                                $COLOR1│$NC"
-echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}" 
+echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}              • FIKRI VPN PREMIUM •              $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
 read -p " Select menu :  "  opt
 echo -e ""
 case $opt in
-01 | 1) clear ; sw-shock ;;
+01 | 1) clear ; ssmenu ;;
 02 | 2) clear ; l2tp ;;
 03 | 3) clear ; wireguard ;;
 04 | 4) clear ; pptp ;;
 05 | 5) clear ; delsw-shock ;;
 06 | 6) clear ; renewsw-shock ;;
 07 | 7) clear ; memberssh ;;
+08 | 8) clear ; sstpmenu ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu-ssh ;;
 esac
+
 
        
